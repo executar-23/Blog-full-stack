@@ -1,0 +1,32 @@
+{
+  "name": "@blog/tokens",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    }
+  },
+  "scripts": {
+    "lint": "yarn run -T eslint .",
+    "typecheck": "yarn run -T tsc -p tsconfig.json --noEmit",
+    "test": "yarn run -T jest",
+    "build": "yarn run -T tsc -p tsconfig.build.json",
+    "docs:mapping": "yarn run -T tsx scripts/identity-mapping.ts && yarn run -T prettier --write ../../docs/IDENTITY-MAPPING.md"
+  },
+  "dependencies": {
+    "@fluentui/tokens": "1.0.0-alpha.24"
+  },
+  "nx": {
+    "tags": [
+      "type:ui",
+      "scope:shared"
+    ]
+  },
+  "devDependencies": {
+    "@blog/config": "workspace:^"
+  }
+}
