@@ -1,0 +1,51 @@
+{
+  "name": "@blog/database",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    },
+    "./testing": {
+      "types": "./src/testing.ts",
+      "default": "./src/testing.ts"
+    }
+  },
+  "scripts": {
+    "lint": "yarn run -T eslint .",
+    "typecheck": "yarn run -T tsc -p tsconfig.json --noEmit",
+    "test": "yarn run -T jest --passWithNoTests",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:check": "drizzle-kit check"
+  },
+  "dependencies": {
+    "drizzle-orm": "0.45.3",
+    "pg": "8.23.0"
+  },
+  "devDependencies": {
+    "@blog/config": "workspace:^",
+    "@types/pg": "8.23.1",
+    "drizzle-kit": "0.31.11"
+  },
+  "nx": {
+    "tags": [
+      "type:util",
+      "scope:shared"
+    ],
+    "targets": {
+      "test": {
+        "inputs": [
+          "default",
+          "^production",
+          {
+            "env": "DATABASE_URL"
+          }
+        ]
+      }
+    }
+  }
+}

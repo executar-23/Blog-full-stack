@@ -1,10 +1,10 @@
 # STATUS — schemas/
 
-| Campo          | Valor                        |
-| -------------- | ---------------------------- |
-| Item AIKB-0003 | `schemas/`                   |
-| Caminho real   | `schemas/`                   |
-| Status         | SCAFFOLDED                   |
-| GAPs           | —                            |
-| Evidência      | Ver arquivos `*.schema.json` |
-| Atualizado     | 2026-09-27                   |
+| Campo          | Valor                                                  |
+| -------------- | ------------------------------------------------------ |
+| Item AIKB-0003 | `schemas/`                                             |
+| Caminho real   | `schemas/`                                             |
+| Status         | IMPLEMENTED                                            |
+| GAPs           | —                                                      |
+| Evidência      | JSON Schemas validados por Ajv (`tools/aikb-coverage`) |
+| Atualizado     | 2026-09-27                                             |

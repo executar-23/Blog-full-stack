@@ -21,7 +21,7 @@ const schemaFiles = SCHEMA_ROOTS.flatMap((root) =>
 );
 
 function createAjv() {
-  const ajv = new Ajv2020({ strict: true, allErrors: true });
+  const ajv = new Ajv2020({ strict: true, allowUnionTypes: true, allErrors: true });
   addFormats(ajv);
   for (const file of schemaFiles) ajv.addSchema(read(file));
   return ajv;

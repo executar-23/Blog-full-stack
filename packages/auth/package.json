@@ -1,0 +1,36 @@
+{
+  "name": "@blog/auth",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    },
+    "./server": {
+      "types": "./src/server.ts",
+      "default": "./src/server.ts"
+    }
+  },
+  "scripts": {
+    "lint": "yarn run -T eslint .",
+    "typecheck": "yarn run -T tsc -p tsconfig.json --noEmit",
+    "test": "yarn run -T jest && yarn run -T tsx scripts/verify-auth-tables.ts"
+  },
+  "devDependencies": {
+    "@blog/config": "workspace:^"
+  },
+  "nx": {
+    "tags": [
+      "type:util",
+      "scope:shared"
+    ]
+  },
+  "dependencies": {
+    "@blog/database": "workspace:^",
+    "better-auth": "1.7.6",
+    "drizzle-orm": "0.45.3"
+  }
+}
