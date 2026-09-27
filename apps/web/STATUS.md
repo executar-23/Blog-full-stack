@@ -1,10 +1,10 @@
 # STATUS — apps/web/
 
-| Campo          | Valor                  |
-| -------------- | ---------------------- |
-| Item AIKB-0003 | `apps/web/`            |
-| Caminho real   | `apps/web/`            |
-| Status         | SCAFFOLDED             |
-| GAPs           | G5                     |
-| Evidência      | Implementado na fase 6 |
-| Atualizado     | 2026-09-27             |
+| Campo          | Valor                                                                                                                                                                                                                                                               |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Item AIKB-0003 | `apps/web/`                                                                                                                                                                                                                                                         |
+| Caminho real   | `apps/web/`                                                                                                                                                                                                                                                         |
+| Status         | SCAFFOLDED                                                                                                                                                                                                                                                          |
+| GAPs           | G5, G8                                                                                                                                                                                                                                                              |
+| Evidência      | Next.js 16 App Router; 18 rotas AIKB + home; SSR Fluent/Griffel; metadata/canonical/OG/JSON-LD; robots, sitemap, RSS, manifest; env Zod; build OpenNext + `wrangler deploy --dry-run`; 44 E2E Playwright + axe (desktop/mobile). Conteúdo visual aguarda wireframes |
+| Atualizado     | 2026-09-27                                                                                                                                                                                                                                                          |
