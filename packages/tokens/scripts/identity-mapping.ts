@@ -54,17 +54,32 @@ for (const [groupName, group] of Object.entries(identity)) {
   }
 }
 
-push('', '## 2. Mapeamento semântico para Fluent (overrides)', '', '| Token Fluent | Token da identidade | Valor | Justificativa |', '| --- | --- | --- | --- |');
+push(
+  '',
+  '## 2. Mapeamento semântico para Fluent (overrides)',
+  '',
+  '| Token Fluent | Token da identidade | Valor | Justificativa |',
+  '| --- | --- | --- | --- |',
+);
 for (const m of fluentMapping) {
   push(`| \`${m.fluentToken}\` | \`${m.identityToken}\` | \`${esc(m.value)}\` | ${m.rationale} |`);
 }
 
 push('', '## 3. Ramp de marca derivado (IG3)', '', '| Tom | Valor |', '| --- | --- |');
-for (const [tone, value] of Object.entries(brandRamp)) push(`| ${tone} | \`${value}\`${tone === '80' ? ' (primária)' : ''} |`);
+for (const [tone, value] of Object.entries(brandRamp))
+  push(`| ${tone} | \`${value}\`${tone === '80' ? ' (primária)' : ''} |`);
 
-push('', '## 4. CSS custom properties próprias (`--blog-*`)', '', '| Variável | Valor | Reduced motion |', '| --- | --- | --- |');
+push(
+  '',
+  '## 4. CSS custom properties próprias (`--blog-*`)',
+  '',
+  '| Variável | Valor | Reduced motion |',
+  '| --- | --- | --- |',
+);
 for (const [name, value] of Object.entries(blogCssVariables)) {
-  push(`| \`${name}\` | \`${esc(value)}\` | ${blogReducedMotionVariables[name] ? `\`${blogReducedMotionVariables[name]}\`` : ''} |`);
+  push(
+    `| \`${name}\` | \`${esc(value)}\` | ${blogReducedMotionVariables[name] ? `\`${blogReducedMotionVariables[name]}\`` : ''} |`,
+  );
 }
 push('');
 
