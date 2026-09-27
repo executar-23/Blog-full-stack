@@ -1,0 +1,15 @@
+{
+  // apps/event-collector — Cloudflare Worker (ADR-004). No account or route is
+  // provisioned by this repository (G8); no event destination yet (G7).
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "creator-led-platform-event-collector",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-09-27",
+  "compatibility_flags": ["nodejs_compat"],
+  "vars": {
+    "ALLOWED_ORIGINS": "",
+  },
+  "observability": {
+    "enabled": true,
+  },
+}

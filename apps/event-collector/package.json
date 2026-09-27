@@ -1,0 +1,38 @@
+{
+  "name": "@blog/event-collector",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "lint": "yarn run -T eslint .",
+    "typecheck": "yarn run -T tsc -p tsconfig.json --noEmit",
+    "test": "yarn run -T jest",
+    "build-worker": "WRANGLER_SEND_METRICS=false wrangler deploy --dry-run --outdir dist"
+  },
+  "dependencies": {
+    "@blog/analytics-schema": "workspace:^",
+    "@blog/config": "workspace:^"
+  },
+  "nx": {
+    "tags": [
+      "type:app",
+      "scope:collector"
+    ],
+    "targets": {
+      "build-worker": {
+        "dependsOn": [
+          "^build"
+        ],
+        "outputs": [
+          "{projectRoot}/dist"
+        ],
+        "cache": true
+      }
+    }
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "5.20260926.1",
+    "wrangler": "4.141.0"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  // ADR-004 — Cloudflare Workers via OpenNext. No account, Hyperdrive or domain
+  // is created by this repository (G8). Production bindings are added once
+  // provisioned, e.g. a Hyperdrive binding whose connection string is used as
+  // DATABASE_URL.
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "creator-led-platform-studio",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-09-27",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS",
+  },
+  "observability": {
+    "enabled": true,
+  },
+}

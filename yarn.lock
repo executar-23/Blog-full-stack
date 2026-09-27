@@ -1435,7 +1435,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@blog/auth@workspace:packages/auth":
+"@blog/auth@workspace:^, @blog/auth@workspace:packages/auth":
   version: 0.0.0-use.local
   resolution: "@blog/auth@workspace:packages/auth"
   dependencies:
@@ -1530,6 +1530,17 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@blog/event-collector@workspace:apps/event-collector":
+  version: 0.0.0-use.local
+  resolution: "@blog/event-collector@workspace:apps/event-collector"
+  dependencies:
+    "@blog/analytics-schema": "workspace:^"
+    "@blog/config": "workspace:^"
+    "@cloudflare/workers-types": "npm:5.20260926.1"
+    wrangler: "npm:4.141.0"
+  languageName: unknown
+  linkType: soft
+
 "@blog/seo@workspace:^, @blog/seo@workspace:packages/seo":
   version: 0.0.0-use.local
   resolution: "@blog/seo@workspace:packages/seo"
@@ -1594,6 +1605,41 @@ __metadata:
   resolution: "@blog/static-server@workspace:tools/static-server"
   bin:
     blog-static-server: ./server.mjs
+  languageName: unknown
+  linkType: soft
+
+"@blog/studio@workspace:apps/studio":
+  version: 0.0.0-use.local
+  resolution: "@blog/studio@workspace:apps/studio"
+  dependencies:
+    "@axe-core/playwright": "npm:4.13.0"
+    "@blog/auth": "workspace:^"
+    "@blog/config": "workspace:^"
+    "@blog/database": "workspace:^"
+    "@blog/design-system": "workspace:^"
+    "@blog/tokens": "workspace:^"
+    "@fluentui/react-components": "npm:9.74.9"
+    "@griffel/react": "npm:1.7.8"
+    "@opennextjs/cloudflare": "npm:1.20.6"
+    "@playwright/test": "npm:1.63.0"
+    "@t3-oss/env-nextjs": "npm:0.13.11"
+    "@types/node": "npm:22.20.4"
+    "@types/pg": "npm:8.23.1"
+    "@types/react": "npm:19.3.0"
+    "@types/react-dom": "npm:19.3.0"
+    better-auth: "npm:1.7.6"
+    drizzle-orm: "npm:0.45.3"
+    eslint: "npm:9.39.5"
+    eslint-config-next: "npm:16.3.6"
+    next: "npm:16.3.6"
+    pg: "npm:8.23.0"
+    playwright-core: "npm:1.63.0"
+    react: "npm:19.3.0"
+    react-dom: "npm:19.3.0"
+    server-only: "npm:0.0.1"
+    typescript: "npm:6.0.3"
+    wrangler: "npm:4.141.0"
+    zod: "npm:4.6.5"
   languageName: unknown
   linkType: soft
 
@@ -1712,6 +1758,13 @@ __metadata:
   version: 1.20260925.1
   resolution: "@cloudflare/workerd-windows-64@npm:1.20260925.1"
   conditions: os=win32 & cpu=x64
+  languageName: node
+  linkType: hard
+
+"@cloudflare/workers-types@npm:5.20260926.1":
+  version: 5.20260926.1
+  resolution: "@cloudflare/workers-types@npm:5.20260926.1"
+  checksum: 10c0/fe98e57aa563cb375f5c1fa2f2d2bcab559f3491eb87ba76befe4a181af2fb1a355799d0d577d1077dbd056060be661245c0692018cc1383d85e2208bc28c38b
   languageName: node
   linkType: hard
 

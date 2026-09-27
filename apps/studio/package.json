@@ -1,0 +1,86 @@
+{
+  "name": "@blog/studio",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev -p 3001",
+    "build": "next build",
+    "start": "next start -p 3001",
+    "lint": "eslint .",
+    "typecheck": "next typegen && tsc -p tsconfig.json --noEmit",
+    "build-worker": "opennextjs-cloudflare build",
+    "deploy-dry-run": "WRANGLER_SEND_METRICS=false wrangler deploy --dry-run --outdir .wrangler/dry-run",
+    "e2e": "playwright test"
+  },
+  "dependencies": {
+    "@blog/auth": "workspace:^",
+    "@blog/config": "workspace:^",
+    "@blog/database": "workspace:^",
+    "@blog/design-system": "workspace:^",
+    "@blog/tokens": "workspace:^",
+    "@fluentui/react-components": "9.74.9",
+    "@griffel/react": "1.7.8",
+    "@t3-oss/env-nextjs": "0.13.11",
+    "better-auth": "1.7.6",
+    "drizzle-orm": "0.45.3",
+    "next": "16.3.6",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "server-only": "0.0.1",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.13.0",
+    "@opennextjs/cloudflare": "1.20.6",
+    "@playwright/test": "1.63.0",
+    "@types/node": "22.20.4",
+    "@types/pg": "8.23.1",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "eslint": "9.39.5",
+    "eslint-config-next": "16.3.6",
+    "pg": "8.23.0",
+    "playwright-core": "1.63.0",
+    "typescript": "6.0.3",
+    "wrangler": "4.141.0"
+  },
+  "nx": {
+    "tags": [
+      "type:app",
+      "scope:studio"
+    ],
+    "targets": {
+      "build": {
+        "dependsOn": [
+          "^build"
+        ],
+        "outputs": [
+          "{projectRoot}/.next"
+        ],
+        "cache": true
+      },
+      "build-worker": {
+        "dependsOn": [
+          "^build"
+        ],
+        "outputs": [
+          "{projectRoot}/.open-next"
+        ],
+        "cache": true
+      },
+      "deploy-dry-run": {
+        "dependsOn": [
+          "build-worker"
+        ],
+        "cache": false
+      },
+      "e2e": {
+        "dependsOn": [
+          "build"
+        ],
+        "cache": false
+      }
+    }
+  }
+}
