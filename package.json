@@ -1,0 +1,40 @@
+{
+  "name": "creator-led-platform",
+  "private": true,
+  "packageManager": "yarn@4.18.1",
+  "engines": {
+    "node": ">=22.12.0 <23"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "tools/*"
+  ],
+  "devDependencies": {
+    "@swc/core": "1.16.2",
+    "@swc/jest": "0.2.39",
+    "@types/jest": "30.0.0",
+    "@types/jest-axe": "3.5.9",
+    "@types/node": "22.20.4",
+    "@typescript-eslint/parser": "8.70.1",
+    "eslint": "9.39.5",
+    "eslint-config-prettier": "10.1.8",
+    "jest": "30.5.2",
+    "jest-axe": "11.0.0",
+    "jest-environment-jsdom": "30.5.2",
+    "nx": "23.2.1",
+    "prettier": "3.9.9",
+    "tsx": "4.23.15",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.70.1"
+  },
+  "scripts": {
+    "build": "nx run-many -t build",
+    "typecheck": "nx run-many -t typecheck",
+    "lint": "nx run-many -t lint",
+    "test": "nx run-many -t test",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "storybook": "nx run docs:storybook"
+  }
+}

@@ -33,7 +33,7 @@ Critérios: compatibilidade de Fluent UI/Griffel SSR, RSC, route handlers e cach
 
 ## Alternativas
 
-| Alternativa | Situação |
-|---|---|
-| vinext | Recomendado pela Cloudflare, mas beta → descartado por ora |
-| Vercel | Fora do escopo (pedido do usuário: não acoplar à Vercel) |
+| Alternativa | Situação                                                   |
+| ----------- | ---------------------------------------------------------- |
+| vinext      | Recomendado pela Cloudflare, mas beta → descartado por ora |
+| Vercel      | Fora do escopo (pedido do usuário: não acoplar à Vercel)   |

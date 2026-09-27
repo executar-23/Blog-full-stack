@@ -1,0 +1,22 @@
+{
+  "name": "@blog/config",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./jest": "./jest.base.cjs",
+    "./jest-setup-dom": "./jest.setup.dom.cjs"
+  },
+  "scripts": {
+    "lint": "yarn run -T eslint .",
+    "typecheck": "yarn run -T tsc -p tsconfig.json --noEmit",
+    "test": "yarn run -T jest"
+  },
+  "nx": {
+    "tags": [
+      "type:util",
+      "scope:shared"
+    ]
+  }
+}

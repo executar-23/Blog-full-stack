@@ -21,20 +21,24 @@ Não existe package.json anterior que precise ser preservado.
 O monorepo deverá usar:
 
 Runtime:
+
 - Node.js 22.x
 
 Workspace / package manager:
+
 - Yarn 4.x
 - Corepack habilitado
 - versão exata do Yarn fixada em `packageManager`
 - Nx como sistema de monorepo/build orchestration
 
 Frontend:
+
 - React
 - TypeScript em strict mode
 - Fluent UI React v9 (`@fluentui/react-components`)
 
 Design System:
+
 - `@fluentui/tokens`
 - FluentProvider e temas Fluent
 - Griffel (`@griffel/react`) para styling
@@ -42,10 +46,12 @@ Design System:
 - evitar valores visuais hardcoded quando existir token equivalente
 
 Documentação:
+
 - Storybook
 - stories junto aos componentes ou em projeto dedicado de docs
 
 Qualidade:
+
 - ESLint
 - Prettier
 - Jest
@@ -92,23 +98,23 @@ Microsoft 365/Copilot.
 
 ## Por que esta stack
 
-| Escolha | Motivo |
-|---|---|
-| Yarn 4 + Corepack | Mesmo gerenciador do repositório público `microsoft/fluentui`; versão exata fixada em `packageManager` + `yarnPath` torna o lockfile reproduzível sem depender do Yarn global. |
-| Nx | Orquestração com cache e grafo de projetos (`nx affected`) — também usado pelo repositório Fluent; escala para a árvore completa do ADR-005. |
-| Fluent UI v9 | Biblioteca de componentes acessíveis (WCAG) mantida pela Microsoft, tematizável por tokens; evita recriar primitivas (Button, Dialog, Popover, Menu…). |
-| Griffel | Motor CSS-in-JS atômico do próprio Fluent v9, com suporte a SSR e extração AOT — uma única solução de styling para DS e apps. |
-| `@fluentui/tokens` | Contrato de tokens do Fluent; nossos tokens de identidade são mapeados para ele (ver adendo). |
+| Escolha            | Motivo                                                                                                                                                                         |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Yarn 4 + Corepack  | Mesmo gerenciador do repositório público `microsoft/fluentui`; versão exata fixada em `packageManager` + `yarnPath` torna o lockfile reproduzível sem depender do Yarn global. |
+| Nx                 | Orquestração com cache e grafo de projetos (`nx affected`) — também usado pelo repositório Fluent; escala para a árvore completa do ADR-005.                                   |
+| Fluent UI v9       | Biblioteca de componentes acessíveis (WCAG) mantida pela Microsoft, tematizável por tokens; evita recriar primitivas (Button, Dialog, Popover, Menu…).                         |
+| Griffel            | Motor CSS-in-JS atômico do próprio Fluent v9, com suporte a SSR e extração AOT — uma única solução de styling para DS e apps.                                                  |
+| `@fluentui/tokens` | Contrato de tokens do Fluent; nossos tokens de identidade são mapeados para ele (ver adendo).                                                                                  |
 
 ## Alternativas descartadas
 
-| Alternativa | Motivo do descarte |
-|---|---|
-| pnpm / npm workspaces | Regra 7; diverge da referência Fluent. |
-| Turborepo | Nx já cobre cache/grafo e tem plugins para Storybook/Next/Playwright. |
-| Tailwind, Emotion, styled-components, vanilla-extract | Segunda solução de styling (regra 8); Griffel é nativo do Fluent. |
-| MUI, Radix, shadcn/ui, Chakra | Paralelos ao Fluent; duplicariam primitivas. |
-| Fluent UI v8 (`@fluentui/react`) | Legado; v9 é a linha atual. |
+| Alternativa                                           | Motivo do descarte                                                    |
+| ----------------------------------------------------- | --------------------------------------------------------------------- |
+| pnpm / npm workspaces                                 | Regra 7; diverge da referência Fluent.                                |
+| Turborepo                                             | Nx já cobre cache/grafo e tem plugins para Storybook/Next/Playwright. |
+| Tailwind, Emotion, styled-components, vanilla-extract | Segunda solução de styling (regra 8); Griffel é nativo do Fluent.     |
+| MUI, Radix, shadcn/ui, Chakra                         | Paralelos ao Fluent; duplicariam primitivas.                          |
+| Fluent UI v8 (`@fluentui/react`)                      | Legado; v9 é a linha atual.                                           |
 
 ## Consequências detalhadas
 

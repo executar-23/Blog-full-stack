@@ -1,0 +1,12 @@
+.yarn/
+node_modules/
+dist/
+.next/
+.open-next/
+.wrangler/
+storybook-static/
+coverage/
+.nx/
+yarn.lock
+docs/sources/
+packages/database/migrations/meta/

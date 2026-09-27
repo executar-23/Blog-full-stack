@@ -198,10 +198,10 @@ creator-led-platform/
 Estes projetos existem porque a stack técnica do ADR-005 os exige; não substituem
 nenhum item da árvore alvo.
 
-| Caminho | Motivo | Relação com o target |
-|---|---|---|
-| `packages/tokens` | Citado no ADR-005 (seção Identidade visual) | alimenta `packages/design-system` |
-| `packages/config` | Presets compartilhados (TS/ESLint/Jest) exigidos pelo workspace | infraestrutura de build |
-| `packages/database` | ORM Drizzle (stack ADR-005) | implementa `schemas/` + `migrations/` |
-| `apps/docs` | Storybook (stack ADR-005) | catálogo de `packages/design-system` |
-| `tools/aikb-coverage` | Matriz de aceite exigida pelo ADR-006 | governança |
+| Caminho               | Motivo                                                          | Relação com o target                  |
+| --------------------- | --------------------------------------------------------------- | ------------------------------------- |
+| `packages/tokens`     | Citado no ADR-005 (seção Identidade visual)                     | alimenta `packages/design-system`     |
+| `packages/config`     | Presets compartilhados (TS/ESLint/Jest) exigidos pelo workspace | infraestrutura de build               |
+| `packages/database`   | ORM Drizzle (stack ADR-005)                                     | implementa `schemas/` + `migrations/` |
+| `apps/docs`           | Storybook (stack ADR-005)                                       | catálogo de `packages/design-system`  |
+| `tools/aikb-coverage` | Matriz de aceite exigida pelo ADR-006                           | governança                            |

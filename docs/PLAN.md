@@ -1,12 +1,12 @@
 # PLAN — creator-led-platform (repo `blog-full-stack`)
 
-| Campo | Valor |
-|---|---|
-| ID | BFS-PLAN-0001 |
-| VERSION | 0.4.0 |
+| Campo    | Valor                                                                    |
+| -------- | ------------------------------------------------------------------------ |
+| ID       | BFS-PLAN-0001                                                            |
+| VERSION  | 0.4.0                                                                    |
 | WORKFLOW | Rodada 1: materialização integral do target (ADR-006) + fundação técnica |
-| OWNER | A DEFINIR |
-| Branch | `claude/sleepy-maxwell-n78pls` |
+| OWNER    | A DEFINIR                                                                |
+| Branch   | `claude/sleepy-maxwell-n78pls`                                           |
 
 ## Hierarquia de fontes
 
@@ -19,18 +19,18 @@
 
 ## Fases da rodada (WIP = 1, commit atômico por fase)
 
-| # | Fase | Aceite |
-|---|---|---|
-| 0 | ADRs, fontes preservadas (SHA-256), target architecture, GAPS | hashes conferem |
-| 1 | Workspace: Yarn 4.18.1 (Corepack), Nx, TS strict, ESLint, Prettier, Jest, `packages/config` | `yarn install --immutable` sem avisos de peer |
-| 2 | `packages/tokens` a partir do ZIP (fonte + status por token) | build/typecheck/lint/test |
-| 3 | `packages/design-system` (BlogProvider + CodeChip) + `apps/docs` Storybook | build, build-storybook, jest-axe, smoke Playwright |
-| 4 | Materialização da árvore AIKB (README + STATUS por nó) + `tools/aikb-coverage` | cobertura 100% |
-| 5 | Pacotes conhecidos: content-schema, seo, analytics-schema, analytics, auth, editorial-components, social-syndication, database (+ migration) | build/test; migration aplica em PG limpo |
-| 6 | `apps/web` (rotas AIKB) + OpenNext/Wrangler | build Next + build OpenNext + dry-run + E2E/axe |
-| 7 | `apps/studio` + `apps/event-collector` | build/test |
-| 8 | CI GitHub Actions completo | verde no PR |
-| — | **CHECKPOINT** | árvore, versões, resultados, Storybook, diff --stat, divergências, matriz AIKB |
+| #   | Fase                                                                                                                                         | Aceite                                                                         |
+| --- | -------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| 0   | ADRs, fontes preservadas (SHA-256), target architecture, GAPS                                                                                | hashes conferem                                                                |
+| 1   | Workspace: Yarn 4.18.1 (Corepack), Nx, TS strict, ESLint, Prettier, Jest, `packages/config`                                                  | `yarn install --immutable` sem avisos de peer                                  |
+| 2   | `packages/tokens` a partir do ZIP (fonte + status por token)                                                                                 | build/typecheck/lint/test                                                      |
+| 3   | `packages/design-system` (BlogProvider + CodeChip) + `apps/docs` Storybook                                                                   | build, build-storybook, jest-axe, smoke Playwright                             |
+| 4   | Materialização da árvore AIKB (README + STATUS por nó) + `tools/aikb-coverage`                                                               | cobertura 100%                                                                 |
+| 5   | Pacotes conhecidos: content-schema, seo, analytics-schema, analytics, auth, editorial-components, social-syndication, database (+ migration) | build/test; migration aplica em PG limpo                                       |
+| 6   | `apps/web` (rotas AIKB) + OpenNext/Wrangler                                                                                                  | build Next + build OpenNext + dry-run + E2E/axe                                |
+| 7   | `apps/studio` + `apps/event-collector`                                                                                                       | build/test                                                                     |
+| 8   | CI GitHub Actions completo                                                                                                                   | verde no PR                                                                    |
+| —   | **CHECKPOINT**                                                                                                                               | árvore, versões, resultados, Storybook, diff --stat, divergências, matriz AIKB |
 
 ## Regras permanentes
 

@@ -1,0 +1,36 @@
+# dependencies
+node_modules/
+.yarn/*
+!.yarn/releases
+!.yarn/patches
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
+
+# build output
+dist/
+.next/
+out/
+.open-next/
+.wrangler/
+storybook-static/
+coverage/
+*.tsbuildinfo
+
+# nx
+.nx/cache
+.nx/workspace-data
+
+# test output
+test-results/
+playwright-report/
+
+# env
+.env
+.env.*
+!.env.example
+.dev.vars
+
+# os
+.DS_Store
