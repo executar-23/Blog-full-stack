@@ -1,0 +1,55 @@
+# GAPS, CONFLICTS e decisões — registro vivo
+
+Legenda: **GAP** = informação ausente · **CONFLICT** = fontes divergentes · **DECISION** = decisão tomada (com autor) · status `OPEN` / `RESOLVED` / `SUPERSEDED`.
+
+## Fontes
+
+| ID | Tipo | Descrição | Tratamento | Status |
+|---|---|---|---|---|
+| G1 | GAP | AIKB-0003 não estava disponível no início da sessão | Usuário anexou e designou `bdc6c876-Aikb-0003.txt` | RESOLVED |
+| C8 | CONFLICT | O AIKB-0003 anexado é byte a byte o DOC-20260926-0003 (árvore do monorepo); o texto conceitual/funil citado na conversa não consta no arquivo | Árvore = target (ADR-005/006). Conceito full stack registrado como citação do ADR-005; funil Pesquisa→Artigo→CMS→Blog→SEO/Social→CTA→Lead→CRM/Newsletter→Produto→Analytics registrado como requisito da conversa | RESOLVED (registrado) |
+| G2 | GAP | "C1–C6 / G1–G3" citados como aceitos em sessão anterior não estão disponíveis | Este arquivo substitui aquele registro | RESOLVED |
+
+## Arquitetura
+
+| ID | Tipo | Descrição | Tratamento | Status |
+|---|---|---|---|---|
+| D2 | DECISION | Studio como rota `/studio` em apps/web | Substituído pelo ADR-005: `apps/studio` é app próprio | SUPERSEDED |
+| C9 | CONFLICT | Projetos exigidos pela stack técnica mas ausentes da árvore AIKB-0003: `packages/tokens`, `packages/config`, `packages/database`, `apps/docs` | Mantidos como bootstrap técnico, documentados em `docs/architecture/target-architecture.md`; não substituem itens do target | RESOLVED (registrado) |
+| C11 | CONFLICT | `design-system-producao.md` (ZIP) exige `packages/ui-web`, `packages/contracts`, `services/ai-panel-gateway`, `services/calendar-mail-api` com stubs mockados × regra do usuário "não implementar integrações externas fictícias" e árvore AIKB (`packages/design-system`, `contracts/`, `services/{crm,newsletter,search,recommendations,syndication}`) | Segue AIKB + regra do usuário: nenhum gateway de IA/calendário, nenhum stub que finja integração. ZIP usado apenas como identidade visual | OPEN — apresentar no checkpoint |
+| D4 | DECISION | Adapter Cloudflare: vinext (recomendado, beta) × OpenNext (estável) | OpenNext 1.20.6 por decisão explícita do usuário (ADR-004), revisar quando vinext estabilizar | RESOLVED |
+| D3 | DECISION | Biblioteca de auth | Better Auth 1.7.6 (usuário) | RESOLVED |
+| G3 | GAP | Locale/i18n | pt-BR único, sem i18n (não há requisito de outro idioma) | OPEN |
+| G5 | GAP | Wireframes | Páginas em estado SCAFFOLDED até recebê-los | OPEN |
+| G6 | GAP | Provedor de e-mail/newsletter/CRM | `services/newsletter`, `services/crm` BLOCKED; leads apenas no banco | OPEN |
+| G7 | GAP | Provedor de analytics e destino dos eventos | `packages/analytics` e `apps/event-collector` sem destino externo | OPEN |
+| G8 | GAP | Conta Cloudflare, domínio, Postgres gerenciado atrás do Hyperdrive | Nada criado; `wrangler.jsonc` sem IDs reais | OPEN |
+| G9 | GAP | Especificação funcional de agents (a01–a08, manager-orchestrator), workflows, evals e policies | Contratos genéricos + STATUS BLOCKED por item | OPEN |
+| G10 | GAP | Conteúdo editorial (artigos, autores, tópicos, séries, campanhas, recursos, landing pages) e knowledge base | Nenhum conteúdo inventado; estrutura + schema apenas | OPEN |
+| G11 | GAP | Provedor de social syndication e de recomendações | `packages/social-syndication`, `services/syndication`, `services/recommendations` BLOCKED | OPEN |
+| G12 | GAP | Textos jurídicos (privacidade, cookies, termos) | Rotas existem sem texto jurídico | OPEN |
+
+## Ferramentas e versões
+
+| ID | Tipo | Descrição | Tratamento | Status |
+|---|---|---|---|---|
+| C1 | CONFLICT | TypeScript latest 7.0.2 fora do peer de `typescript-eslint@8.70.1` (`<6.1.0`) | `typescript@6.0.3` | RESOLVED |
+| C2 | CONFLICT | ADR-001 cita Cypress; pedido original cita Playwright | Playwright (ADR-003) | RESOLVED |
+| C3 | CONFLICT | `@fluentui/tokens` só existe como alpha | `1.0.0-alpha.24`, idêntico ao usado por `@fluentui/react-theme` | RESOLVED |
+| C4 | CONFLICT | "Server Components por padrão" × Fluent/Griffel client-only | Ilhas client no design-system (ADR-002) | RESOLVED |
+| C10 | CONFLICT | ESLint latest 10.11.0 fora dos peers de plugins exigidos por `eslint-config-next@16.3.6` (react/import/jsx-a11y aceitam ≤ 9) | `eslint@9.39.5` | RESOLVED |
+
+## Identidade visual (detalhes em `IDENTITY-MAPPING.md`)
+
+| ID | Tipo | Descrição | Tratamento | Status |
+|---|---|---|---|---|
+| IC0 | CONFLICT | Brand kit (logo aprovado) × ZIP de DS para cores | Usuário: ZIP prevalece para cores; brand kit é fonte de assets (logo, favicons, OG, manifest) | RESOLVED |
+| IC1 | CONFLICT | Azul primário: ZIP faixa `#0A63C9–#1565D8` × brand kit `#1F5ECC` | Usuário: `#0A63C9` | RESOLVED |
+| IC1b | CONFLICT | `theme-color #1F5ECC` em `site.webmanifest` / `head-snippet.html` do brand kit diverge do primário decidido | Assets preservados sem alteração; `theme-color` do app usa token `#0A63C9`. Confirmar | OPEN |
+| IC2 | CONFLICT | ZIP especifica faixas (tipografia 28–32px etc.; motion 200–250ms etc.) | Usuário: valor responsivo — `clamp()` entre 768 e 1024 px; motion máx. padrão / mín. com `prefers-reduced-motion` | RESOLVED |
+| IC3 | CONFLICT | Neutros ZIP `#F3F4F6`/`#E2E4E8` × brand kit `#F0F0F1`/`#D5D6D8` | Pela decisão IC0 (ZIP prevalece para cores) usam-se valores do ZIP; valores do brand kit ficam como tokens `brandKit*` apenas para o logo. Confirmar | OPEN |
+| IC4 | CONFLICT | `color-success-check`: "#2E7D32 (green) / blue check variants also seen" | Token definido com `#2E7D32` e status CONFLICT (variante azul não especificada) | OPEN |
+| IC5 | CONFLICT | ZIP descreve padrões de apps de terceiros (Outlook/Edge/Copilot/Linear/Guardbase/Dataguard/Microsoft Store) com tokens "approx." | Valores tratados como especificação (decisão do usuário); componentes desses domínios não criados agora (wireframes decidirão) | OPEN |
+| IG1 | GAP | Famílias tipográficas não nomeadas ("system sans", "monospace"); wordmark do logo é raster monoespaçado sem família identificada | Stacks de sistema; nenhuma fonte baixada | OPEN |
+| IG2 | GAP | ZIP não especifica line-height, grid/colunas, tema dark, focus ring detalhado, z-index | Tokens Fluent base mantidos e marcados `fluent-base (ZIP silente)`; sem tema dark | OPEN |
+| IG3 | DECISION | Fluent exige ramp de 16 tons; ZIP fornece 1 azul | Usuário: ramp derivado algoritmicamente de `#0A63C9` (tom 80 exato) | RESOLVED |
