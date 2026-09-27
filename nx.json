@@ -42,10 +42,6 @@
       "inputs": ["default", "^production"],
       "cache": true,
       "outputs": ["{projectRoot}/storybook-static"]
-    },
-    "e2e": {
-      "dependsOn": ["build-storybook", "build"],
-      "cache": false
     }
   }
 }

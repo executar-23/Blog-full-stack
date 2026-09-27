@@ -37,6 +37,14 @@
     "tags": [
       "type:app",
       "scope:docs"
-    ]
+    ],
+    "targets": {
+      "e2e": {
+        "dependsOn": [
+          "build-storybook"
+        ],
+        "cache": false
+      }
+    }
   }
 }

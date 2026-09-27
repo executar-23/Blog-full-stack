@@ -1,0 +1,109 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NEXT_PUBLIC_SITE_URL: http://localhost:3000
+  DATABASE_URL: postgres://blog:blog@localhost:5432/blog
+  NX_NO_CLOUD: 'true'
+  WRANGLER_SEND_METRICS: 'false'
+
+jobs:
+  quality:
+    name: Lint, typecheck, test, build
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: blog
+          POSTGRES_PASSWORD: blog
+          POSTGRES_DB: blog
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U blog" --health-interval 5s --health-timeout 5s --health-retries 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - run: corepack enable
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .nvmrc
+          cache: yarn
+      - run: yarn install --immutable
+      - name: Format
+        run: yarn format:check
+      - name: Lint, typecheck, test, build
+        run: yarn nx run-many -t lint typecheck test build --output-style=static
+      - name: Migrations are in sync with the schema
+        run: yarn workspace @blog/database run db:check
+      - name: Generated artifacts are up to date
+        run: |
+          yarn workspace @blog/tokens run docs:mapping
+          yarn workspace @blog/content-schema run json-schemas
+          yarn workspace @blog/analytics-schema run json-schemas
+          yarn prettier --write schemas docs/IDENTITY-MAPPING.md
+          yarn workspace @blog/aikb-coverage run report
+          git diff --exit-code
+
+  e2e:
+    name: E2E and accessibility
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: blog
+          POSTGRES_PASSWORD: blog
+          POSTGRES_DB: blog
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U blog" --health-interval 5s --health-timeout 5s --health-retries 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - run: corepack enable
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .nvmrc
+          cache: yarn
+      - run: yarn install --immutable
+      - run: yarn workspace @blog/web exec playwright install --with-deps chromium
+      - name: Apply migrations
+        run: yarn workspace @blog/database run db:migrate
+      - name: Storybook build + smoke (axe)
+        run: yarn nx run @blog/docs:e2e --output-style=static
+      - name: Web E2E (axe, desktop + mobile)
+        run: yarn nx run @blog/web:e2e --output-style=static
+      - name: Studio E2E (Better Auth RBAC)
+        run: yarn nx run @blog/studio:e2e --output-style=static
+        env:
+          BETTER_AUTH_SECRET: ci-only-secret-not-used-anywhere-else-000
+      - if: failure()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: playwright-results
+          path: apps/*/test-results
+          retention-days: 7
+
+  workers:
+    name: Cloudflare Workers build (dry-run)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - run: corepack enable
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .nvmrc
+          cache: yarn
+      - run: yarn install --immutable
+      - name: Build Workers and dry-run deploy (no publish)
+        run: yarn nx run-many -t deploy-dry-run build-worker --output-style=static

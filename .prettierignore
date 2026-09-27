@@ -10,3 +10,4 @@ coverage/
 yarn.lock
 docs/sources/
 packages/database/migrations/meta/
+**/next-env.d.ts
