@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://creator-led-platform.local/schemas/agents/agent.schema.json",
+  "title": "Agent contract",
+  "type": "object",
+  "required": [
+    "id",
+    "version",
+    "status",
+    "owner",
+    "inputs",
+    "outputs",
+    "depends_on",
+    "blocks",
+    "handoff",
+    "acceptance"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+    },
+    "version": {
+      "type": "string"
+    },
+    "status": {
+      "enum": ["IMPLEMENTED", "SCAFFOLDED", "BLOCKED"]
+    },
+    "owner": {
+      "type": "string"
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "$ref": "../../contracts/input/input.schema.json"
+      }
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "$ref": "../../contracts/output/output.schema.json"
+      }
+    },
+    "depends_on": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "blocks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "handoff": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "../../contracts/handoff/handoff.schema.json"
+        }
+      ]
+    },
+    "acceptance": {
+      "type": "array",
+      "items": {
+        "$ref": "../../contracts/acceptance/acceptance.schema.json"
+      }
+    },
+    "gaps": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}

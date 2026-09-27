@@ -1,0 +1,8 @@
+# Operational data is never versioned (see data/README.md).
+*
+!.gitignore
+!README.md
+!STATUS.md
+!*/
+!*/README.md
+!*/STATUS.md

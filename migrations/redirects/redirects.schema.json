@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://creator-led-platform.local/migrations/redirects/redirects.schema.json",
+  "title": "Redirect map",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["source", "destination", "permanent"],
+    "properties": {
+      "source": {
+        "type": "string",
+        "pattern": "^/"
+      },
+      "destination": {
+        "type": "string"
+      },
+      "permanent": {
+        "type": "boolean"
+      },
+      "reason": {
+        "type": "string"
+      }
+    },
+    "additionalProperties": false
+  }
+}

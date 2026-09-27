@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://creator-led-platform.local/schemas/state/state.schema.json",
+  "title": "State",
+  "$ref": "../../contracts/state/state.schema.json"
+}

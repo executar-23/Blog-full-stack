@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://creator-led-platform.local/schemas/evals/eval.schema.json",
+  "title": "Eval result",
+  "type": "object",
+  "required": ["id", "dimension", "target", "result", "evaluatedAt"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+    },
+    "dimension": {
+      "enum": [
+        "editorial",
+        "linguistic",
+        "ux",
+        "storytelling",
+        "commercial",
+        "design",
+        "accessibility",
+        "seo",
+        "analytics"
+      ]
+    },
+    "target": {
+      "type": "string"
+    },
+    "result": {
+      "enum": ["pass", "fail", "blocked"]
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evaluatedAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": false
+}

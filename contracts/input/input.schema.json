@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://creator-led-platform.local/contracts/input/input.schema.json",
+  "title": "Input contract",
+  "description": "Entradas disponíveis para uma tarefa, agente ou workflow (método EXECUTAR: INPUT).",
+  "type": "object",
+  "required": ["id", "items"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "kind"],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "kind": {
+            "enum": ["file", "data", "directory", "reference", "variable"]
+          },
+          "location": {
+            "type": "string"
+          },
+          "required": {
+            "type": "boolean",
+            "default": true
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

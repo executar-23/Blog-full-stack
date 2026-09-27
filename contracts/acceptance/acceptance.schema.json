@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://creator-led-platform.local/contracts/acceptance/acceptance.schema.json",
+  "title": "Acceptance contract",
+  "description": "Critérios objetivos de aceite; DONE exige execução, estado esperado alcançado, verificação e evidência (método EXECUTAR).",
+  "type": "object",
+  "required": ["id", "criteria"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+    },
+    "criteria": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["description", "verification"],
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "verification": {
+            "type": "string"
+          },
+          "evidence": {
+            "type": "string"
+          },
+          "met": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

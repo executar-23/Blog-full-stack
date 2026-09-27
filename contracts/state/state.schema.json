@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://creator-led-platform.local/contracts/state/state.schema.json",
+  "title": "State contract",
+  "description": "Estado de execução de um item (método EXECUTAR: PREPARED, SUBMITTED, APPROVED, RELEASED, VERIFIED; BLOCKED; USER_ACTION_REQUIRED).",
+  "type": "object",
+  "required": ["id", "status", "updatedAt"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+    },
+    "status": {
+      "enum": [
+        "PREPARED",
+        "SUBMITTED",
+        "APPROVED",
+        "RELEASED",
+        "VERIFIED",
+        "BLOCKED",
+        "USER_ACTION_REQUIRED",
+        "DONE"
+      ]
+    },
+    "automationLevel": {
+      "enum": ["A0", "A1", "A2", "A3", "A4"]
+    },
+    "dependsOn": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "blocks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": false
+}

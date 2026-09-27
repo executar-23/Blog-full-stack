@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://creator-led-platform.local/schemas/tasks/task.schema.json",
+  "title": "Task",
+  "description": "Nó executável do grafo de trabalho (método EXECUTAR: ID, VERSION, AREA, WORKFLOW, OWNER, STATUS, DEPENDS_ON, BLOCKS, EVIDENCE, AUTOMATION_LEVEL, HANDOFF).",
+  "type": "object",
+  "required": ["id", "version", "area", "workflow", "owner", "status"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+    },
+    "version": {
+      "type": "string"
+    },
+    "area": {
+      "type": "string"
+    },
+    "workflow": {
+      "type": "string"
+    },
+    "owner": {
+      "type": "string",
+      "description": "Use 'A DEFINIR' quando desconhecido"
+    },
+    "status": {
+      "enum": [
+        "PREPARED",
+        "SUBMITTED",
+        "APPROVED",
+        "RELEASED",
+        "VERIFIED",
+        "BLOCKED",
+        "USER_ACTION_REQUIRED",
+        "DONE"
+      ]
+    },
+    "dependsOn": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "blocks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "automationLevel": {
+      "enum": ["A0", "A1", "A2", "A3", "A4"]
+    },
+    "handoff": {
+      "$ref": "../../contracts/handoff/handoff.schema.json"
+    }
+  },
+  "additionalProperties": false
+}

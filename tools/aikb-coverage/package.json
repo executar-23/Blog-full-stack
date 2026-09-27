@@ -1,0 +1,32 @@
+{
+  "name": "@blog/aikb-coverage",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "lint": "yarn run -T eslint .",
+    "typecheck": "yarn run -T tsc -p tsconfig.json --noEmit",
+    "test": "yarn run -T jest",
+    "report": "yarn run -T tsx src/report.ts && yarn run -T prettier --write ../../docs/architecture/aikb-0003-coverage.md",
+    "scaffold": "yarn run -T tsx src/scaffold.ts"
+  },
+  "devDependencies": {
+    "@blog/config": "workspace:^",
+    "ajv": "8.20.0",
+    "ajv-formats": "3.0.1"
+  },
+  "nx": {
+    "tags": [
+      "type:util",
+      "scope:shared"
+    ],
+    "targets": {
+      "test": {
+        "cache": false
+      },
+      "report": {
+        "cache": false
+      }
+    }
+  }
+}

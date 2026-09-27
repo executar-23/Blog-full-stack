@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://creator-led-platform.local/contracts/handoff/handoff.schema.json",
+  "title": "Handoff contract",
+  "description": "Passagem de trabalho: último estado verificado, evidências, pendências e próxima ação (método EXECUTAR: HANDOFF/checkpoint).",
+  "type": "object",
+  "required": ["from", "to", "state", "nextAction"],
+  "properties": {
+    "from": {
+      "type": "string"
+    },
+    "to": {
+      "type": "string"
+    },
+    "state": {
+      "enum": [
+        "PREPARED",
+        "SUBMITTED",
+        "APPROVED",
+        "RELEASED",
+        "VERIFIED",
+        "BLOCKED",
+        "USER_ACTION_REQUIRED",
+        "DONE"
+      ]
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "pending": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "blockers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "nextAction": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

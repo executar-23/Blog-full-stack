@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://creator-led-platform.local/contracts/output/output.schema.json",
+  "title": "Output contract",
+  "description": "Entregáveis concretos, formato e schema obrigatório (método EXECUTAR: OUTPUT).",
+  "type": "object",
+  "required": ["id", "deliverables"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+    },
+    "deliverables": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "format"],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "format": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string",
+            "description": "Caminho/URI do schema obrigatório"
+          },
+          "location": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

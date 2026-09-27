@@ -1,0 +1,14 @@
+{
+  "$schema": "../../schemas/agents/agent.schema.json",
+  "id": "a02-strategy",
+  "version": "0.0.0",
+  "status": "BLOCKED",
+  "owner": "A DEFINIR",
+  "inputs": [],
+  "outputs": [],
+  "depends_on": [],
+  "blocks": [],
+  "handoff": null,
+  "acceptance": [],
+  "gaps": ["G9"]
+}
