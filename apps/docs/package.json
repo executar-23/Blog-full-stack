@@ -1,0 +1,42 @@
+{
+  "name": "@blog/docs",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "storybook": "storybook dev -p 6006 --no-open",
+    "build-storybook": "storybook build -o storybook-static --quiet",
+    "lint": "yarn run -T eslint .",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "e2e": "playwright test"
+  },
+  "dependencies": {
+    "@blog/design-system": "workspace:^",
+    "@blog/tokens": "workspace:^",
+    "@fluentui/react-components": "9.74.9",
+    "@griffel/react": "1.7.8",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.13.0",
+    "@blog/static-server": "workspace:^",
+    "@playwright/test": "1.63.0",
+    "@storybook/addon-a11y": "10.6.0",
+    "@storybook/addon-docs": "10.6.0",
+    "@storybook/react-vite": "10.6.0",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitejs/plugin-react": "6.1.1",
+    "playwright-core": "1.63.0",
+    "storybook": "10.6.0",
+    "typescript": "6.0.3",
+    "vite": "8.3.1"
+  },
+  "nx": {
+    "tags": [
+      "type:app",
+      "scope:docs"
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "@blog/static-server",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "blog-static-server": "./server.mjs"
+  },
+  "exports": {
+    ".": "./server.mjs"
+  },
+  "scripts": {
+    "lint": "yarn run -T eslint ."
+  },
+  "nx": {
+    "tags": [
+      "type:util",
+      "scope:shared"
+    ]
+  }
+}

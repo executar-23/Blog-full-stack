@@ -13,6 +13,8 @@
   "devDependencies": {
     "@swc/core": "1.16.2",
     "@swc/jest": "0.2.39",
+    "@testing-library/dom": "10.4.2",
+    "@testing-library/jest-dom": "7.0.1",
     "@types/jest": "30.0.0",
     "@types/jest-axe": "3.5.9",
     "@types/node": "22.20.4",

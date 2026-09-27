@@ -20,7 +20,8 @@
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["production", "^production"],
-      "cache": true
+      "cache": true,
+      "outputs": ["{projectRoot}/dist", "{projectRoot}/.next", "{projectRoot}/.open-next"]
     },
     "typecheck": {
       "dependsOn": ["^build"],
@@ -39,7 +40,12 @@
     "build-storybook": {
       "dependsOn": ["^build"],
       "inputs": ["default", "^production"],
-      "cache": true
+      "cache": true,
+      "outputs": ["{projectRoot}/storybook-static"]
+    },
+    "e2e": {
+      "dependsOn": ["build-storybook", "build"],
+      "cache": false
     }
   }
 }
