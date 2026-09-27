@@ -1,0 +1,182 @@
+creator-led-platform/
+├── apps/
+│   ├── web/
+│   │   ├── blog/
+│   │   │   ├── artigos/
+│   │   │   ├── topicos/
+│   │   │   └── autores/
+│   │   ├── criadores/
+│   │   ├── recursos/
+│   │   │   ├── calculadoras/
+│   │   │   ├── templates/
+│   │   │   └── benchmarks/
+│   │   ├── newsletter/
+│   │   ├── planos/
+│   │   ├── sobre/
+│   │   ├── entrar/
+│   │   ├── cadastro/
+│   │   └── legal/
+│   │       ├── privacidade/
+│   │       ├── cookies/
+│   │       └── termos/
+│   ├── studio/
+│   └── event-collector/
+│
+├── packages/
+│   ├── design-system/
+│   ├── editorial-components/
+│   ├── content-schema/
+│   ├── analytics-schema/
+│   ├── analytics/
+│   ├── seo/
+│   ├── auth/
+│   └── social-syndication/
+│
+├── content/
+│   ├── articles/
+│   ├── authors/
+│   ├── topics/
+│   ├── series/
+│   ├── campaigns/
+│   ├── resources/
+│   └── landing-pages/
+│
+├── editorial/
+│   ├── pilares/
+│   │   ├── p1-riscos-cognitivos/
+│   │   ├── p2-processos-neuroadaptativos/
+│   │   └── p3-ferramentas-solucoes/
+│   ├── consciencia/
+│   │   ├── c1-descoberta/
+│   │   ├── c2-compreensao/
+│   │   └── c3-decisao/
+│   ├── topic-packs/
+│   ├── briefs/
+│   ├── research/
+│   ├── outlines/
+│   ├── drafts/
+│   ├── fact-check/
+│   ├── reviews/
+│   ├── published/
+│   └── distribution/
+│
+├── knowledge/
+│   ├── audience/
+│   ├── research/
+│   ├── psychology/
+│   ├── linguistics/
+│   ├── editorial/
+│   ├── didactics/
+│   ├── storytelling/
+│   ├── commercial/
+│   ├── marketing/
+│   ├── ux/
+│   ├── design-system/
+│   ├── analytics/
+│   ├── products/
+│   ├── brand/
+│   ├── policies/
+│   └── evidence/
+│
+├── agents/
+│   ├── a01-research-intelligence/
+│   ├── a02-strategy/
+│   ├── a03-communication/
+│   ├── a04-story/
+│   ├── a05-experience/
+│   ├── a06-visual/
+│   ├── a07-growth/
+│   ├── a08-governance/
+│   └── manager-orchestrator/
+│
+├── workflows/
+│   ├── research/
+│   ├── strategy/
+│   ├── communication/
+│   ├── story/
+│   ├── experience/
+│   ├── visual/
+│   ├── growth/
+│   ├── governance/
+│   ├── editorial-production/
+│   ├── acquisition/
+│   ├── conversion/
+│   ├── retention/
+│   └── learning-loop/
+│
+├── contracts/
+│   ├── input/
+│   ├── output/
+│   ├── handoff/
+│   ├── state/
+│   └── acceptance/
+│
+├── evals/
+│   ├── editorial/
+│   ├── linguistic/
+│   ├── ux/
+│   ├── storytelling/
+│   ├── commercial/
+│   ├── design/
+│   ├── accessibility/
+│   ├── seo/
+│   └── analytics/
+│
+├── policies/
+│   ├── linguistic-policy/
+│   ├── terminology/
+│   ├── voice-rules/
+│   ├── accessibility/
+│   ├── brand/
+│   ├── editorial/
+│   ├── privacy/
+│   └── security/
+│
+├── examples/
+├── anti-examples/
+│
+├── services/
+│   ├── crm/
+│   ├── newsletter/
+│   ├── search/
+│   ├── recommendations/
+│   └── syndication/
+│
+├── data/
+│   ├── events/
+│   ├── leads/
+│   ├── content-performance/
+│   ├── audience/
+│   ├── state/
+│   └── evidence/
+│
+├── schemas/
+│   ├── content/
+│   ├── tasks/
+│   ├── agents/
+│   ├── workflows/
+│   ├── state/
+│   ├── evidence/
+│   ├── evals/
+│   └── analytics/
+│
+├── infrastructure/
+│   ├── environments/
+│   ├── cdn/
+│   ├── dns/
+│   ├── observability/
+│   ├── ci-cd/
+│   └── security/
+│
+├── migrations/
+│   ├── content/
+│   └── redirects/
+│
+└── docs/
+    ├── architecture/
+    ├── url-governance/
+    ├── taxonomy/
+    ├── tracking-plan/
+    ├── runbooks/
+    ├── sops/
+    └── decisions/

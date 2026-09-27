@@ -1,0 +1,5 @@
+risco-cognitivo — paleta derivada do logo aprovado
+#1F5ECC  azul principal
+#F0F0F1  preenchimento da placa
+#D5D6D8  contorno da placa
+#FFFFFF  fundo

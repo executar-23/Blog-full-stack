@@ -1,0 +1,37 @@
+{
+  "brand_blue": {
+    "hex": "#1F5ECC",
+    "rgb": [
+      31,
+      94,
+      204
+    ],
+    "source": "sampled from approved raster"
+  },
+  "board_fill": {
+    "hex": "#F0F0F1",
+    "rgb": [
+      240,
+      240,
+      241
+    ],
+    "source": "sampled from approved raster"
+  },
+  "board_line": {
+    "hex": "#D5D6D8",
+    "rgb": [
+      213,
+      214,
+      216
+    ],
+    "source": "sampled from approved raster"
+  },
+  "white": {
+    "hex": "#FFFFFF",
+    "rgb": [
+      255,
+      255,
+      255
+    ]
+  }
+}
