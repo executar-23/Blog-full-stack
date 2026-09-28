@@ -1,10 +1,15 @@
 {
-  // ADR-004 — Cloudflare Workers via OpenNext. No account, Hyperdrive or domain
-  // is created by this repository (G8). Production bindings are added once
-  // provisioned, e.g. a Hyperdrive binding whose connection string is used as
-  // DATABASE_URL.
+  // ADR-004 — Cloudflare Workers via OpenNext. Production bindings (Hyperdrive,
+  // etc.) are added once provisioned (G8).
+  //
+  // "name" is "blog-full-stack", not the target-architecture name
+  // "creator-led-platform-web" (docs/architecture/target-architecture.md):
+  // the Cloudflare project was created via dashboard "Connect to Git" before
+  // this file existed, auto-named from the repo. Renamed here to match the
+  // real deployed Worker and stop Workers Builds' recurring name-mismatch
+  // warning/auto-PR (G8, 2026-09-28) — registered, not silently chosen.
   "$schema": "../../node_modules/wrangler/config-schema.json",
-  "name": "creator-led-platform-web",
+  "name": "blog-full-stack",
   "main": ".open-next/worker.js",
   "compatibility_date": "2026-09-27",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
@@ -14,5 +19,12 @@
   },
   "observability": {
     "enabled": true,
+  },
+  // Provisional value until a custom domain is decided (G8). Baked in at
+  // Next.js build time (NEXT_PUBLIC_*); not required by the Worker at
+  // runtime, kept here so wrangler.jsonc stays the single source of truth
+  // and local/dry-run/CI builds match the deployed value.
+  "vars": {
+    "NEXT_PUBLIC_SITE_URL": "https://blog-full-stack.executar-rotina-8b7.workers.dev",
   },
 }
