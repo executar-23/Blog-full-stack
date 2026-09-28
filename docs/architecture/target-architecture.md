@@ -205,3 +205,9 @@ nenhum item da árvore alvo.
 | `packages/database`   | ORM Drizzle (stack ADR-005)                                     | implementa `schemas/` + `migrations/` |
 | `apps/docs`           | Storybook (stack ADR-005)                                       | catálogo de `packages/design-system`  |
 | `tools/aikb-coverage` | Matriz de aceite exigida pelo ADR-006                           | governança                            |
+
+## Extensão pós-ADR-006 (fora da árvore AIKB-0003 — ADR-007)
+
+| Caminho                 | Motivo                                                                                    | Relação com o target                            |
+| ----------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------- |
+| `apps/web/src/app/loja` | Pedido do usuário 2026-09-28, com protótipo próprio ("Executar Store S01") como wireframe | conecta com `blog/artigos`; catálogo real = G17 |

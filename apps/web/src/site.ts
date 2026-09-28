@@ -9,7 +9,10 @@ export const site = {
   logo: '/brand/risco-cognitivo-logo-400w.png',
 } as const;
 
-/** Public routes of AIKB-0003 `apps/web/*` (docs/url-governance/routes.md). */
+/**
+ * Public routes of `apps/web/*` (docs/url-governance/routes.md). All but
+ * `/loja` come from AIKB-0003; `/loja` is a documented extension (ADR-007).
+ */
 export const routes = [
   { path: '/blog', title: 'Blog' },
   { path: '/blog/artigos', title: 'Artigos' },
@@ -29,6 +32,7 @@ export const routes = [
   { path: '/legal/privacidade', title: 'Privacidade' },
   { path: '/legal/cookies', title: 'Cookies' },
   { path: '/legal/termos', title: 'Termos' },
+  { path: '/loja', title: 'Loja' },
 ] as const;
 
 export type RoutePath = (typeof routes)[number]['path'];
