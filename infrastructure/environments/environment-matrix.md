@@ -17,8 +17,8 @@ são versionados; use `.env.local` (dev), secrets do GitHub Actions (CI) e
 Arquivos de exemplo: `apps/web/.env.example`, `apps/studio/.env.example`,
 `apps/event-collector/wrangler.jsonc` (`vars`).
 
-| Ambiente         | Estado                                                                  |
-| ---------------- | ----------------------------------------------------------------------- |
-| local            | PostgreSQL local + `next dev` / `wrangler dev`                          |
-| CI               | PostgreSQL de serviço no GitHub Actions                                 |
-| preview/produção | BLOCKED — conta Cloudflare, Hyperdrive e domínio não provisionados (G8) |
+| Ambiente         | Estado                                                                                                                                                                                                                                                                                                    |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| local            | PostgreSQL local + `next dev` / `wrangler dev`                                                                                                                                                                                                                                                           |
+| CI               | PostgreSQL de serviço no GitHub Actions                                                                                                                                                                                                                                                                  |
+| preview/produção | PARCIAL (G8). Conta Cloudflare `Executar-rotina@outlook.com's Account` (`88b77e62…e014`) provisionada 2026-09-28. `apps/web` conectado a Cloudflare Workers Builds (GitHub, branch `claude/sleepy-maxwell-n78pls`); `NEXT_PUBLIC_SITE_URL=https://blog-full-stack.executar-rotina-8b7.workers.dev` cadastrado em Production. Subdomínio responde HTTP 200, porém ainda serve o Worker placeholder — build do Next.js pendente de sucesso (`Retry build` necessário após a variável ter sido adicionada). Domínio próprio, Postgres gerenciado e Hyperdrive: BLOCKED, não provisionados. `apps/studio`/`apps/event-collector`: deploy nesta conta não confirmado. |
