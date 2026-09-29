@@ -1,0 +1,50 @@
+diff --git a/lib/createContext.js b/lib/createContext.js
+index d805a17f1cb7c23c6005b0f6a610caec4c75b49e..017b2b183f992d9748c621e48365d591a77dac6e 100644
+--- a/lib/createContext.js
++++ b/lib/createContext.js
+@@ -1,7 +1,6 @@
+ 'use client';
+ import { useIsomorphicLayoutEffect } from "@fluentui/react-utilities";
+ import * as React from "react";
+-import { unstable_NormalPriority as NormalPriority, unstable_runWithPriority as runWithPriority } from "scheduler";
+ const createProvider = (Original)=>{
+     const Provider = (props)=>{
+         // Holds an actual "props.value"
+@@ -16,10 +15,8 @@ const createProvider = (Original)=>{
+         }
+         useIsomorphicLayoutEffect(()=>{
+             valueRef.current = props.value;
+-            runWithPriority(NormalPriority, ()=>{
+-                contextValue.current.listeners.forEach((listener)=>{
+-                    listener(props.value);
+-                });
++            contextValue.current.listeners.forEach((listener)=>{
++                listener(props.value);
+             });
+         }, [
+             props.value
+diff --git a/lib-commonjs/createContext.cjs b/lib-commonjs/createContext.cjs
+index 9e4c6a8363a0d0e82eb436b50e5049c458e5c39e..4e5ef33b0bc7e6ab9e7ca377a97f65205739ec4d 100644
+--- a/lib-commonjs/createContext.cjs
++++ b/lib-commonjs/createContext.cjs
+@@ -12,7 +12,6 @@ Object.defineProperty(exports, "createContext", {
+ const _interop_require_wildcard = require("@swc/helpers/_/_interop_require_wildcard");
+ const _reactutilities = require("@fluentui/react-utilities");
+ const _react = /*#__PURE__*/ _interop_require_wildcard._(require("react"));
+-const _scheduler = require("scheduler");
+ const createProvider = (Original)=>{
+     const Provider = (props)=>{
+         // Holds an actual "props.value"
+@@ -27,10 +26,8 @@ const createProvider = (Original)=>{
+         }
+         (0, _reactutilities.useIsomorphicLayoutEffect)(()=>{
+             valueRef.current = props.value;
+-            (0, _scheduler.unstable_runWithPriority)(_scheduler.unstable_NormalPriority, ()=>{
+-                contextValue.current.listeners.forEach((listener)=>{
+-                    listener(props.value);
+-                });
++            contextValue.current.listeners.forEach((listener)=>{
++                listener(props.value);
+             });
+         }, [
+             props.value

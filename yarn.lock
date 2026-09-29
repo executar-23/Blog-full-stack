@@ -3412,7 +3412,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fluentui/react-context-selector@npm:^9.2.20":
+"@fluentui/react-context-selector@npm:9.2.20":
   version: 9.2.20
   resolution: "@fluentui/react-context-selector@npm:9.2.20"
   dependencies:
@@ -3426,6 +3426,23 @@ __metadata:
     "@types/react":
       optional: true
   checksum: 10c0/60f23d2a2ad189a244171298cefc4208346d7b0ed75aa2e3de70609cfc0ca5a552f9c37ebba29aa4f2b894f610d1c379059b4bb8fd0496dbc28f409a41d7e30f
+  languageName: node
+  linkType: hard
+
+"@fluentui/react-context-selector@patch:@fluentui/react-context-selector@npm%3A9.2.20#~/.yarn/patches/@fluentui-react-context-selector-npm-9.2.20-f4a3c8f3a0.patch":
+  version: 9.2.20
+  resolution: "@fluentui/react-context-selector@patch:@fluentui/react-context-selector@npm%3A9.2.20#~/.yarn/patches/@fluentui-react-context-selector-npm-9.2.20-f4a3c8f3a0.patch::version=9.2.20&hash=7e458a"
+  dependencies:
+    "@fluentui/react-utilities": "npm:^9.26.7"
+    "@swc/helpers": "npm:^0.5.1"
+  peerDependencies:
+    "@types/react": ">=16.14.0 <20.0.0"
+    react: ">=16.14.0 <20.0.0"
+    scheduler: ">=0.19.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+  checksum: 10c0/87c5b20b45d432ab2c4d82efb5d8c0b87123e5c43c8668ca581e93132bdd0372754308192a9b2942cb677c76dada12314e966865ab405e8b3faa856c35192fb3
   languageName: node
   linkType: hard
 
