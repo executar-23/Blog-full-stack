@@ -3,6 +3,7 @@
 ## Status: BLOCKED on first sync
 
 ## Repo facts
+
 - Storybook lives at `apps/docs/.storybook`, package `apps/docs`.
 - Only **1 of 10** design-system components has stories: `CodeChip`
   (`apps/docs/src/components/CodeChip.stories.tsx`). The other nine
@@ -16,6 +17,7 @@
   action needed.
 
 ## [GENERAL] fix applied
+
 - `packages/design-system/package.json` had no top-level `types` field
   (only `exports['.'].types` pointing at `./src/index.ts`). The converter's
   `findTypesRoot`/`projectFor` only reads `pkgJson.types`/`typings`, so it
@@ -25,6 +27,7 @@
   for real consumers; this only helps tools that read the legacy field.
 
 ## Hard blocker — do not work around without discussing with the user
+
 `package-validate.mjs`'s `[BUNDLE_EXPORT]` smoke check fails:
 `CodeChip` is not a function on `window.BlogDesignSystem` once the bundle
 evaluates in the browser. Root cause (confirmed via `.render-check.json`):
@@ -38,7 +41,10 @@ This is a **false positive** for this repo. The real source is
 `node_modules/@fluentui/react-context-selector/lib/createContext.js`:
 
 ```js
-import { unstable_NormalPriority as NormalPriority, unstable_runWithPriority as runWithPriority } from "scheduler";
+import {
+  unstable_NormalPriority as NormalPriority,
+  unstable_runWithPriority as runWithPriority,
+} from 'scheduler';
 ```
 
 `@fluentui/react-context-selector` is a real, first-class dependency of
@@ -62,10 +68,11 @@ instead of the design system's real, compiled behavior — against this
 skill's "ship what the customer already built" principle.
 
 **This blocks producing any working bundle** — CodeChip is currently the
-*only* storied component, and it (transitively, via `BlogProvider`) pulls
+_only_ storied component, and it (transitively, via `BlogProvider`) pulls
 in `@fluentui/react-components` → `@fluentui/react-context-selector`.
 
 ## Re-sync risks / open questions for the user
+
 - Needs a fix in the design-sync converter itself (a cfg knob to
   allowlist real `scheduler` imports, or to skip the shim when the
   resolved specifier isn't inside `react-dom`), which this session cannot

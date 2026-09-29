@@ -6,11 +6,7 @@ Every design must be wrapped once, at the root, in `BlogProvider` (from `@blog/d
 import { BlogProvider } from '@blog/design-system';
 
 export default function App() {
-  return (
-    <BlogProvider>
-      {/* your screen */}
-    </BlogProvider>
-  );
+  return <BlogProvider>{/* your screen */}</BlogProvider>;
 }
 ```
 
@@ -20,14 +16,14 @@ export default function App() {
 
 This design system has **no utility classes to author** — every component styles itself internally via Griffel (`makeStyles`) reading Fluent theme tokens that `BlogProvider` sets. When composing your own layout around the shipped components, do not invent class names; use the `--blog-*` CSS custom properties `BlogProvider` exposes, always through `var(--blog-<group>-<name>)`:
 
-| Family | Example variables |
-|---|---|
-| Color | `--blog-color-text-primary`, `--blog-color-text-secondary`, `--blog-color-surface`, `--blog-color-surface-muted`, `--blog-color-border` |
-| Spacing | `--blog-spacing-<name>` (px values) |
-| Radius | `--blog-radius-<name>` |
-| Typography | `--blog-font-<name>`, `--blog-font-family-<name>` |
-| Motion | `--blog-motion-<name>` |
-| Breakpoint | `--blog-breakpoint-<name>` |
+| Family     | Example variables                                                                                                                       |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| Color      | `--blog-color-text-primary`, `--blog-color-text-secondary`, `--blog-color-surface`, `--blog-color-surface-muted`, `--blog-color-border` |
+| Spacing    | `--blog-spacing-<name>` (px values)                                                                                                     |
+| Radius     | `--blog-radius-<name>`                                                                                                                  |
+| Typography | `--blog-font-<name>`, `--blog-font-family-<name>`                                                                                       |
+| Motion     | `--blog-motion-<name>`                                                                                                                  |
+| Breakpoint | `--blog-breakpoint-<name>`                                                                                                              |
 
 Reduced-motion-aware tokens (motion/gradient) ship a `-reduced` variant pair automatically handled by the tokens package — reference the base name; do not branch on `prefers-reduced-motion` yourself.
 
@@ -44,7 +40,7 @@ import { BlogProvider, CodeChip } from '@blog/design-system';
 
 <BlogProvider>
   <CodeChip value="482913" copyLabel="Copiar código" copiedLabel="Copiado" />
-</BlogProvider>
+</BlogProvider>;
 ```
 
 For your own layout glue (spacing/alignment around shipped components), use plain CSS with the `--blog-*` variables above, e.g. `style={{ padding: 'var(--blog-spacing-md)', color: 'var(--blog-color-text-secondary)' }}` — never hardcode a color or spacing literal.
