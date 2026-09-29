@@ -39,5 +39,8 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "storybook": "nx run docs:storybook"
+  },
+  "resolutions": {
+    "@fluentui/react-context-selector@npm:^9.2.20": "patch:@fluentui/react-context-selector@npm%3A9.2.20#~/.yarn/patches/@fluentui-react-context-selector-npm-9.2.20-f4a3c8f3a0.patch"
   }
 }

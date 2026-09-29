@@ -1,0 +1,11 @@
+{
+  "projectId": "9213791b-bc62-4756-bab4-5b616d35a097",
+  "shape": "storybook",
+  "pkg": "@blog/design-system",
+  "globalName": "BlogDesignSystem",
+  "storybookConfigDir": "apps/docs/.storybook",
+  "storybookStatic": ".design-sync/sb-reference",
+  "buildCmd": "yarn workspace @blog/tokens run build && yarn workspace @blog/design-system run build",
+  "readmeHeader": ".design-sync/conventions.md",
+  "entry": "./packages/design-system/dist/index.js"
+}
